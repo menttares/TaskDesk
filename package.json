@@ -1,0 +1,32 @@
+{
+  "name": "taskdesk",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "typecheck": "tsc --noEmit",
+    "build": "npm run typecheck && vite build",
+    "watch": "vite build --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/menttares/TaskDesk.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/menttares/TaskDesk/issues"
+  },
+  "homepage": "https://github.com/menttares/TaskDesk#readme",
+  "dependencies": {
+    "@popperjs/core": "^2.11.8",
+    "bootstrap": "^5.3.8"
+  },
+  "devDependencies": {
+    "@types/bootstrap": "^5.2.11",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.6"
+  }
+}
