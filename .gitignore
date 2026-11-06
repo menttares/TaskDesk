@@ -480,3 +480,11 @@ $RECYCLE.BIN/
 
 # Vim temporary swap files
 *.swp
+
+
+# Frontend dependencies and build output
+node_modules/
+wwwroot/dist/
+
+# dotnet-tools
+.config/dotnet-tools.json
