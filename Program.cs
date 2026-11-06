@@ -1,9 +1,26 @@
+using Microsoft.EntityFrameworkCore;
+using TaskDesk.Data;
+
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
+
+var connectionString =
+    builder.Configuration.GetConnectionString("TaskDesk")
+    ?? throw new InvalidOperationException(
+        "Не задана строка подключения к базе данных"
+    );
+
+builder.Services.AddDbContext<TaskDeskDbContext>(options =>
+    options.UseNpgsql(connectionString));
+
+
 var app = builder.Build();
+
+
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
