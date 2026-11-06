@@ -1,0 +1,61 @@
+@model List<TaskDesk.Models.Ticket>
+
+@{
+    ViewData["Title"] = "Заявки";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h1 class="mb-0">Заявки</h1>
+
+    <a asp-action="Create" class="btn btn-primary">
+        Создать заявку
+    </a>
+</div>
+
+@if (TempData["Success"] is string message)
+{
+    <div class="alert alert-success" role="status">
+        @message
+    </div>
+}
+
+@if (Model.Count == 0)
+{
+    <div class="alert alert-info">
+        Заявок пока нет. Создай первую.
+    </div>
+}
+else
+{
+    <div class="table-responsive">
+        <table class="table table-hover align-middle">
+            <thead>
+                <tr>
+                    <th scope="col">Номер</th>
+                    <th scope="col">Название</th>
+                    <th scope="col">Статус</th>
+                    <th scope="col">Приоритет</th>
+                    <th scope="col">Создана, UTC</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var ticket in Model)
+                {
+                    <tr>
+                        <td>@ticket.Id</td>
+                        <td>@ticket.Title</td>
+                        <td>
+                            @Html.DisplayFor(_ => ticket.Status)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(_ => ticket.Priority)
+                        </td>
+                        <td>
+                            @ticket.CreatedDate.ToString("dd.MM.yyyy HH:mm")
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
